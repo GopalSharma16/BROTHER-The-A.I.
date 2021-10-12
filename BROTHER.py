@@ -127,9 +127,9 @@ path = 'D:\\C Practice\\trial.txt'  #path of the text file stored here to where 
 # functions calling
 def calling_everything():   
     try:
-        #to redirect the terminal or console output to a text file
-        with open(path, 'w') as f:
-            with contextlib.redirect_stdout(f):
+        # #to redirect the terminal or console output to a text file
+        # with open(path, 'w') as f:
+        #     with contextlib.redirect_stdout(f):
                 #now the code works for recognizing the commands
                 while True:
                     statement = get_command().lower()
@@ -196,7 +196,7 @@ def calling_everything():
                     elif 'how are you' in statement:
                         speak("I am totally fine, tell me about you that how You are?")
                         how_being = get_command()
-                        if 'fine' in how_being or 'good' in how_being:
+                        if 'fine' in how_being or 'good' in how_being or 'well' in how_being:
                             speak("That's good to hear from you!")
                         elif 'not fine' in how_being or 'not good' in how_being or 'not' in how_being:
                             speak("Oh I'm sorry, Please takecare of yours!")
@@ -250,33 +250,33 @@ def calling_everything():
         calling_everything()
 
 if __name__=="__main__":
-    # calling_everything()
     wish()
+    calling_everything()
 
-    with open('trial.txt') as f:
-        input_file = f.read()    
+    # # with open('trial.txt') as f:
+    # #     input_file = f.read()    
 
-    #defining GUI
+    # #defining GUI
     
-    brother =Tk()
-    brother.title("BROTHER, THE A.I.")
-    brother.geometry('1366x768')
+    # brother =Tk()
+    # brother.title("BROTHER, THE A.I.")
+    # brother.geometry('1366x768')
 
-    input_frame = Frame(brother, bg='grey', borderwidth=3, relief=RIDGE)
-    input_frame.pack(side=RIGHT, padx=10, fill=Y)
+    # input_frame = Frame(brother, bg='grey', borderwidth=3, relief=RIDGE)
+    # input_frame.pack(side=RIGHT, padx=10, fill=Y)
 
-    img = PhotoImage(file = 'robo.png')
+    # img = PhotoImage(file = 'robo.png')
 
-    img_frame = Frame(brother)
-    img_frame.pack(side=LEFT, padx=10)
+    # img_frame = Frame(brother)
+    # img_frame.pack(side=LEFT, padx=10)
 
-    img_label=Label(img_frame, image = img)
-    img_label.pack(anchor='w')
+    # img_label=Label(img_frame, image = img)
+    # img_label.pack(anchor='w')
 
-    input_label = Label(input_frame, text=input_file)
-    input_label.pack()
+    # input_label = Label(input_frame, text=input_file)
+    # input_label.pack()
 
-    button = Button(input_frame,text='click to run BROTHER', command=calling_everything, borderwidth=2, relief=SUNKEN)
-    button.pack(pady=350)
+    # button = Button(input_frame,text='click to run BROTHER', command=calling_everything, borderwidth=2, relief=SUNKEN)
+    # button.pack(pady=350)
 
-    brother.mainloop()
+    # brother.mainloop()
