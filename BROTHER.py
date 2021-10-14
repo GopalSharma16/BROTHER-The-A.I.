@@ -8,7 +8,7 @@ import pywhatkit
 import random
 import string
 import os
-import contextlib
+# import contextlib
 
 
 #defining BROTHER
@@ -57,7 +57,7 @@ def get_command():
     recog = sr.Recognizer()
     with sr.Microphone() as mic_source:
         # it adjust the energy threshold according to surrounding noises
-        recog.adjust_for_ambient_noise(mic_source, duration=1)
+        recog.adjust_for_ambient_noise(mic_source, duration=1.5)
         print("\nSay Something.....")
         audio = recog.listen(mic_source)
 
@@ -155,10 +155,6 @@ def calling_everything():
                         notepad = 'C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Notepad'
                         os.startfile(notepad)
 
-                    elif 'open M S Word' in statement or ('open' and 'word' in statement):
-                        word = 'C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Microsoft Office\\Microsoft Office Word 2007'
-                        speak("Opening Microsoft Office Word 2007")
-                        os.startfile(word)
                     
                     elif 'play music' in statement or 'play the song In the end' in statement or 'play a song' in statement:
                         music = 'D:\\music\\In the end.mp3'
@@ -189,9 +185,10 @@ def calling_everything():
                     elif('password' in statement):
                         password()
 
-                    elif('terminate yourself' in statement or 'exit yourself' in statement or 'close yourself' in statement or 'abort yourself' in statement):
-                        speak("Okay! getting terminated, Takecare, Bye-Bye.")
-                        exit()
+                    elif 'open M S Word' in statement or ('open' and 'word' in statement):
+                        word = 'C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Microsoft Office\\Microsoft Office Word 2007'
+                        speak("Opening Microsoft Office Word 2007")
+                        os.startfile(word)
 
                     elif 'how are you' in statement:
                         speak("I am totally fine, tell me about you that how You are?")
@@ -204,7 +201,10 @@ def calling_everything():
                     elif 'thank you' in statement:
                         speak("oh! there isn't any need for thanks. Well it's my pleasure to assist you!")
 
-                    elif 'who are you' in statement:
+                    elif 'what are you doing' in statement or "what's going on" in statement or "what's up" in statement:
+                        speak("I am waiting for your command!")
+
+                    elif 'who are you' in statement or 'your name' in statement:
                         speak("Ooooooooo my GOD, don't you know me?")
                         while(True):
                             statement_intro = get_command().lower()
@@ -243,9 +243,14 @@ def calling_everything():
                     elif 'who is your owner' in statement or 'name of owner' in statement or 'brother' in statement:
                         speak("My Owner's or Brother's name is Gopal Sharma. If you want more details about him, you may contact his father. JUST KIDDING")
 
+                    elif('terminate yourself' in statement or 'exit yourself' in statement or 'close yourself' in statement or 'abort yourself' in statement):
+                        speak("Okay! getting terminated, Takecare, Bye-Bye.")
+                        exit()
+
                     else:
                         speak("Sorry! I can't process your command as I have just taken birth and not know this one! again Sorry!")
                         calling_everything()
+                    
     except Exception:
         calling_everything()
 
