@@ -8,6 +8,7 @@ import pywhatkit
 import random
 import string
 import os
+import docx
 # import contextlib
 
 
@@ -121,6 +122,11 @@ def password():
         print("".join(s[0:pval]))
     except Exception:
         pass
+
+def document(title, text):
+    doc = docx.Document()
+    doc.add_paragraph(text)
+    doc.save(title + '.docx')
 
 path = 'D:\\C Practice\\trial.txt'  #path of the text file stored here to where the console output is to be stored
 
@@ -247,8 +253,15 @@ def calling_everything():
                         speak("Okay! getting terminated, Takecare, Bye-Bye.")
                         exit()
 
+                    elif('write a word document' in statement or 'create a document' in statement or 'create a word document' in statement):
+                        speak('What should be the Title of the document?')
+                        title = get_command()
+                        speak('Now tell me the paragraph')
+                        text = get_command()
+                        document(title, text)
+                                
                     else:
-                        speak("Sorry! I can't process your command as I have just taken birth and not know this one! again Sorry!")
+                        speak("Sorry! I can't process your command.")
                         calling_everything()
                     
     except Exception:
